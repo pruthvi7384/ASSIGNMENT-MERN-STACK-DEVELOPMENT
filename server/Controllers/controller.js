@@ -22,7 +22,7 @@ import bcrypt from 'bcryptjs';
 
         // ==========Validate All Fields enter or not========
         if(!firstname || !lastname || !email || !phone || !address || !password){
-            res.status(422).json({message: "Please Enter All Fields Properly !"});
+            res.status(201).json({message: "Please Enter All Fields Properly !"});
         }
 
         // =========Registration Proccess==========
@@ -31,7 +31,7 @@ import bcrypt from 'bcryptjs';
             const userExist = await User.findOne({ email: email });
 
             if(userExist){
-                res.status(422).json({message: "An account with this email already exists."});
+                res.status(201).json({message: "An account with this email already exists."});
             }else{
                 const user = new User({firstname, lastname, email, phone, address, password});
                 await user.save();
@@ -52,7 +52,7 @@ import bcrypt from 'bcryptjs';
 
             // ========Cheack filed is not empty=======
             if(!email || !password){
-                res.status(422).json({message: "Please Enter All Fields Properly !"});
+                res.status(201).json({message: "Please Enter All Fields Properly !"});
             }
 
             // ==========Match Email id exist or not===========
@@ -74,10 +74,10 @@ import bcrypt from 'bcryptjs';
                             user: login
                         });
                 }else{
-                    res.status(422).json({message: "Your Login credential is wrong Please Check and try again later!"});
+                    res.status(201).json({message: "Your Login credential is wrong Please Check and try again later!"});
                 }
             }else{
-                res.status(422).json({message: "Your Not Register Please First Register !"});
+                res.status(201).json({message: "Your Not Register Please First Register !"});
             }
         }catch(e){
             console.log(e.message);
