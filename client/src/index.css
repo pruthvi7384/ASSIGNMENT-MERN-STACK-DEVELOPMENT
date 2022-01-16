@@ -1,0 +1,226 @@
+/* ===========Google Font Import=========== */
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@400;500;600&display=swap');
+/* ========X===Google Font Import===X======== */
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar{
+  display: none;
+}
+
+body{
+  background-color: #FFFFFF;
+  font-family: 'Open Sans', sans-serif;
+  /* font-family: 'Poppins', sans-serif; */
+}
+
+:root{
+  --font-family: 'Poppins', sans-serif;
+  --color: #5fcf80;
+  --color1:#111111;
+  --color3: #928f88;
+  --color4: #333333;
+  --color5: #777777;
+  --color6: #444444;
+  --font-weight: 700;
+  --font-weight1: 600;
+  --font-weight2: 500;
+}
+
+/* =========Default Styling======= */
+  ul{
+    list-style-type: none;
+    padding-left: 0;
+  }
+  a{
+    text-decoration: inherit !important;
+  }
+/* ======X===Default Styling===X==== */
+
+/* ===========Navigation Bar=========== */
+  
+  .navbar{
+    background: #ffffff;
+    box-shadow: 0 0 20px rgb(0 0 0 / 5%);
+  }
+  .navbar-brand{
+      color: var(--color) !important;
+      font-size: 20px;
+      font-weight: var(--font-weight);
+      text-transform: uppercase;
+  }
+  .navbar-brand span{
+      color: var(--color1) !important;
+  }
+  .nav-link{
+      text-align: center;
+      color: var(--color1) !important;
+      font-weight:var(--font-weight1);
+      transition: all 0.3s ease-in-out;
+  }
+  .nav-link:hover{
+      color: var(--color) !important;
+  }
+  .nav-active{
+      color: var(--color) !important;
+  }
+
+/* ========X===Navigation Bar===X======== */
+
+/* ==================Registration And Login Form Styling============== */
+    .account_form #account_heading{
+      text-align: center;
+      font-family: var(--font-family);
+    }
+    .account_form #account_heading h3{
+      font-weight: var(--font-weight1);
+      color: var(--color);
+    }
+    .account_form #account_heading p{
+      font-weight: var(--font-weight1);
+      text-transform: uppercase;
+      color: var(--color3);
+    }
+    .account_form .account_form_body .row{
+      justify-content:center;
+    }
+    .account_button p{
+      margin-top:10px;
+      font-weight:var(--font-weight2);
+      font-family: var(--font-family);
+    }
+    .account_button .btn{
+      background-color: var(--color);
+      font-family: var(--font-family);
+      font-weight:var(--font-weight1);
+    }
+    .account_button p a{
+      font-weight:var(--font-weight1);
+      color: var(--color);
+    }
+
+    .form-floating label{
+      font-family: var(--font-family);
+      font-weight: var(--font-weight2);
+      color: var(--color4) !important;
+    }
+    .form-floating .form-control{
+      outline:none !important;
+      border: none !important;
+      box-shadow:  0 4px 16px rgb(0 0 0 / 10%);
+      background-color:none;
+      font-family:var(--font-family) !important;
+      font-weight: var(--font-weight2);
+      color: var(--color4) !important;
+    }
+    .fade p{
+      font-family: var(--font-family) !important;
+      font-weight: var(--font-weight2);
+    }
+    .alert-heading {
+      font-family:var(--font-family) !important;
+      font-weight: var(--font-weight1);
+    }
+    /* ===============Responsive========= */
+        @media(max-width:768px){
+          .account_form #account_heading h3{
+              font-size:20px;
+          }
+          .account_form #account_heading p{
+              font-size:14px;
+          }
+          .form-floating textarea {
+              font-size:10px!important;
+          }
+        }
+    /* ===============Responsive========= */
+/* ==============X====Sign Up And Login Form Styling===X=========== */
+
+/* =========Profile Page Styling============= */
+    .profile_page{
+      padding:20px;
+      box-shadow:  0 4px 16px rgb(0 0 0 / 10%);
+      border-radius:5px;
+    }
+    .profile_page .profile_heding{
+      text-align: center;
+      font-family: var(--font-family);
+    }
+    .profile_page .profile_heding h3{
+      color: var(--color4);
+      font-weight: var(--font-weight1);
+    }
+    .profile_page .profile_heding h3 span{
+      color: var(--color);
+    }
+    .profile_page .profile_heding p{
+      font-weight: var(--font-weight1);
+      text-transform: uppercase;
+      color: var(--color3);
+    }
+      .profile_page .profile{
+          justify-content: center;
+      }
+      .profile_page .profile ul li{
+          margin-top: 5px;
+          font-family: var(--font-family);
+          font-weight: var(--font-weight1);
+          color: var(--color5);
+          font-size:18px;
+      }
+      .profile_page .profile ul li span{
+          color: var(--color6);
+          margin-left:5px;
+      }
+
+    /* ===============Responsive========= */
+      @media(max-width:768px){
+        .profile_page .profile_heding h3, .profile_page .quection_profile h3{
+            font-size:20px;
+        }
+        .profile_page .profile_heding p, .profile_page .quection_profile p{
+            font-size:14px;
+        }
+        .profile_page .profile ul li{
+            font-size:12px;
+        }
+      }
+  /* ===============Responsive========= */
+/* =======X==Profile Page Styling==X=========== */
+
+/* ==============Error Page Styling============== */
+    .Error__Page{
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      font-weight:bold;
+      background-image: linear-gradient(to right, rgb(226, 255, 254) 50%, #fff 50%);
+      font-family: var(--font-family);
+    }
+    .Error__Page h1{
+      font-size:80px;
+      color:red;
+      font-weight: var(--font-weight1);
+    }
+    .Error__Page p{
+      font-size:20px;
+      color:var(--color);
+      font-weight: var(--font-weight1);
+    }
+    .Error__Page .btn{
+      background-color: var(--color);
+      font-family: 'Poppins', sans-serif;
+      font-weight:600;
+    }
+/* ===========X===Error Page Styling===X=========== */
