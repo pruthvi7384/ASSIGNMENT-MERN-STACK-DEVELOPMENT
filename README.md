@@ -1,4 +1,4 @@
-# Facebook Messanger Clone MERN Stack
+# ASSIGNMENT-MERN-STACK-DEVELOPMENT
 ## [Demo](https://mern-stack-assignment.netlify.app)
 --------
 
