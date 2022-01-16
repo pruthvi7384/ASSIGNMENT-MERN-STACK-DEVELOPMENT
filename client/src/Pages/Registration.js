@@ -1,12 +1,20 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import { Col, Container, Form, Row, Button, Alert, FloatingLabel } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
+import { useProfile } from '../Context.Provider';
 
 function Registration() {
     const [show, setShow] = useState(false);
     const [message, setMessage] = useState('');
     const [loading, setloading] = useState(false);
+    const History = useHistory();
+
+    const {profile} = useProfile();
+
+    if(profile){
+        History.push('/profile');
+    }
     
     const [user,setUser] = useState({
         firstname:'',
@@ -62,6 +70,31 @@ function Registration() {
     }
     const register = async (e)=>{
         e.preventDefault();
+        try{
+            setloading(true);
+            const signup = await axios.post('https://mernstackassignmentinternship.herokuapp.com/registration',{
+               firstname: user.firstname,
+               lastname: user.lastname,
+               email: user.email,
+               phone: user.phone,
+               address: user.address,
+               password: user.password
+            })
+            setloading(false);
+            setMessage(signup.data.message);
+            setShow(true);
+            setUser({
+                name:'',
+                email:'',
+                password:'',
+                cpassword:''
+            });
+        }catch(e){
+            setloading(true)
+            setMessage(e.message);
+            setShow(true);
+            setloading(false);
+        }
     }
     return (
         <Container className="mt-4 account_form">
@@ -69,8 +102,7 @@ function Registration() {
                 <h3>Registre Now</h3>
                 <p>Register your self</p>
             </Row>
-            <Form className="account_form_body mt-2">
-                { 
+            { 
                 show ?
                     <Alert variant="info" onClose={() => {
                         setShow(false);
@@ -80,7 +112,8 @@ function Registration() {
                     </Alert>
                     :
                     ''
-                }
+            }
+            <Form className="account_form_body mt-2">
                 {REGISTER.map(item =>(
                     <Row key={item.text}>
                         <Col xl={6}>

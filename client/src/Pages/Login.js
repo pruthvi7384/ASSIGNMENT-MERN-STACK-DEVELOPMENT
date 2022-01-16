@@ -1,12 +1,15 @@
 import React,{ useState } from 'react'
 import axios from 'axios';
 import { Col, Container, Form, Row, Button, Alert } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
+import { useProfile } from '../Context.Provider';
 
 function Login() {
     const [show, setShow] = useState(false);
     const [message, setMessage] = useState('');
     const [loading, setloading] = useState(false);
+    const {profile, setProfile} = useProfile();
+    const History = useHistory();
 
     const [user,setUser] = useState({
         email:'',
@@ -34,6 +37,29 @@ function Login() {
     }
     const login = async (e)=>{
         e.preventDefault();
+        try{
+            setloading(true);
+            const login = await axios.post('https://mernstackassignmentinternship.herokuapp.com/login',{
+                email : user.email,
+                password : user.password
+            })
+            setProfile({
+                token: login.data.token,
+                user: login.data.user
+            })
+            setloading(false);
+            setMessage(login.data.message);
+            setShow(true);
+            setUser({
+                email:'',
+                password:''
+            });
+        }catch(e){
+            setloading(true)
+            console.log(e.message);
+            setMessage(e.message);
+            setloading(false);
+        }
     }
 
     return (
@@ -47,6 +73,11 @@ function Login() {
                 show ?
                     <Alert variant="info" onClose={() => {
                          setShow(false);
+                         profile 
+                         ?
+                         History.push('/profile')
+                         :
+                         History.push('/login')
                         }
                     } dismissible>
                         <p className='text-center'>{message}</p>
